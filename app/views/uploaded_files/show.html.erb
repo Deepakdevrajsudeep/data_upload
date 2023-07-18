@@ -1,0 +1,10 @@
+<h1>Uploaded File Details</h1>
+<p><strong>Name:</strong> <%= @uploaded_file.name %></p>
+<p><strong>Size:</strong> <%= @uploaded_file.size %></p>
+
+<% if @uploaded_file.file_content.present? %>
+  <h2>File Content</h2>
+  <pre><%= @uploaded_file.file_content.html_safe %></pre>
+<% else %>
+  <p>File content not available.</p>
+<% end %>

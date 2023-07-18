@@ -1,0 +1,26 @@
+<h1>Uploaded Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>S.No.</th>
+      <th>File and Folder Name</th>
+      <th>Size</th>
+      <th>Show</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @uploaded_files.each_with_index do |file, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= file.name %></td>
+        <td><%= file.size %></td>
+        <td><%= link_to 'Show', uploaded_file_path(file) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= form_tag uploaded_files_path, multipart: true do %>
+    <%= file_field_tag 'files[]', multiple: true %>
+    <%= submit_tag 'Upload' %>
+  <% end %>
